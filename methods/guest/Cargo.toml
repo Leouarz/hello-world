@@ -7,4 +7,17 @@ edition = "2021"
 
 [dependencies]
 # If you want to try (experimental) std support, add `features = [ "std" ]` to risc0-zkvm
-risc0-zkvm = { version = "0.21.0", default-features = false }
+risc0-zkvm = { version = "0.21.0", default-features = false, features = [ "std" ] }
+binary-merkle-tree = { git = "https://github.com/availproject/polkadot-sdk.git", tag = "polkadot-1.7.1-patch-5", default-features = false }
+sp-runtime-interface = { git = "https://github.com/availproject/polkadot-sdk.git", tag = "polkadot-1.7.1-patch-5", default-features = false, features = ["disable_target_static_assertions"] }
+sp-io = { git = "https://github.com/availproject/polkadot-sdk.git", tag = "polkadot-1.7.1-patch-5", default-features = false, features = ["disable_panic_handler"] }
+subxt = { version = "0.34.0", default-features = false, features = ["native"] }
+avail-base = { git = "https://github.com/availproject/avail", branch = "main", default-features = false }
+# Avail-core must be on the same tag as the one used in avail-subxt (in avail main branch in this case)
+avail-core = { git = "https://github.com/availproject/avail-core", tag = "node-v2220-rc1", default-features = false, features = ["runtime", "serde"] }
+unicode-normalization = { version = "0.1.22" }
+
+# Tokio full feature set won't work
+tokio = { version = "1", features = ["rt"] }
+
+# avail-subxt has not features combination to compile it here.
